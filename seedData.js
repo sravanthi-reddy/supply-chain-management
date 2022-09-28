@@ -57,14 +57,14 @@ const populateAdminUser = async (req, res) => {
     var adminRole = await getRoleByName("Admin");
     console.log("all roles",adminRole)
     var adminUser = {
-        "name": "sravanthi",
-       "email": "sravanthi@gmail.com",
-       "password" : process.env.ADMIN_PASS,
-       "phoneNumber": 2499890067,
-       "addressLine1": "7 Crescent Place",
-       "province": "Ontario",
-       "city": "Scarborough" ,
-       "postalCode": "M4C5L7"
+        name: "sravanthi",
+       email: "sravanthi@gmail.com",
+       password : process.env.ADMIN_PASS,
+       phoneNumber: 2499890067,
+       addressLine1: "7 Crescent Place",
+       province: "Ontario",
+       city: "Scarborough" ,
+       postalCode: "M4C5L7"
      }
      await configureUser(adminUser,adminRole[0]._id)
 
@@ -77,14 +77,14 @@ const populateDefaultSupplier = async (req,res) => {
 
     console.log("all roles",supplierRole)
     var supplier = {
-        "name": "ClothingSupplier",
-       "email": "clothingSupplier@gmail.com",
-       "password" : process.env.SUPP_PASS,
-       "phoneNumber": 2899899003,
-       "addressLine1": "255 Penetanguishe road",
-       "province": "Ontario",
-       "city": "Barrie" ,
-       "postalCode": "L4M7C2"
+        name: "ClothingSupplier",
+       email: "clothingSupplier@gmail.com",
+       password: process.env.SUPP_PASS,
+       phoneNumber: 2899899003,
+       addressLine1: "255 Penetanguishe road",
+       province: "Ontario",
+       city: "Barrie" ,
+       postalCode: "L4M7C2"
      }
     
      await configureUser(supplier,supplierRole[0]._id)
