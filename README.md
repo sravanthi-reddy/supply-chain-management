@@ -14,7 +14,7 @@ once you register yourself, sign in and  create project and database then choose
 
 Once you are able to access mongoDB there is an option to know your connection string - go to database under deployment in the left menu and click on connect and select conenct to your Application then you should be able to see similar screen as below
 
-![Alt text](./images/mongoDB-connect.png?raw=true)
+![Mongo DB connect](./images/mongoDB-connect.png?raw=true)
 
 
 we will be using the connection string when we set up out node project
@@ -32,6 +32,7 @@ We need postman to test our API endpoints once the development is done. [Downloa
 
 There are 2 options - you can clone the code from github resposity from [here](https://github.com/sravanthi-reddy/supply-chain-management/tree/master)
 or follow the following steps to set up the project from **scratch**. Skip to Part 3 if you would like to clone the repositoy
+
 ### Step 1 - Initialize the project
 Please go ahead download vscode of you do not have one - [Download VScode](https://code.visualstudio.com/docs/setup/setup-overview)
 
@@ -69,14 +70,14 @@ ADMIN_PASS = ""
 SUPP_PASS = ""
 SECRET= # add any secret key - we need this for setting up jwt
 
-
 ```
 now go `index.js` file under root directory and replace the `dbRoute` variable value with your connection string from mongo DB. and set up your username and password according to the previous dbroute.
 If you remeber about **connection string from part 1** - copy the connection string from mongo DB atals
 
 By now your project structure should look like below 
 
-//ADD PROJECT STRUCURE IMAGE HERE
+![Mongo DB connect](./images/project-structure.png?raw=true)
+
 
 Now run `npm start` then it should display the following message in the command prompt
 
@@ -118,7 +119,8 @@ You can change the seeding data under `configureData()` method in seedData.js fi
 '''
 
 Then you should be able to see success response from the app to the postman. As below
-// ADD postman seed data image as below
+![Mongo DB connect](./images/postman-seeddata.png?raw=true)
+
 
 
 ## Part 5 - hitting different end points 
@@ -167,19 +169,23 @@ sample data
 
 and user should be able to register successfully.
 
-// add register post man screen 
+![Mongo DB connect](./images/register-customer.png?raw=true)
 
 
 ## Part 6 - Security of application  - creating jwt tokens
 Creating jwt token on login, will sign the token on sign in and verify the token for further request. if it is not the same user then will respond with **UnAuthorized** message
-`login`
+`login as Admin`
 
-/ add login image
+![Mongo DB connect](./images/postman-login.png?raw=true)
+
 
 `/addProduct` - without token
-//add unauthorized error
+
+![Mongo DB connect](./images/add-product-without-token.png?raw=true)
 
 `addProduct` with token 
+
+![Mongo DB connect](./images/add-product-with-token.png?raw=true)
 
 
 ## Part 7 - RBAC - Role Based Access Control
@@ -189,19 +195,19 @@ refere to the code in ** middlewares/passport.js** to understand how we are able
 In the database while seeding the data, we have generated **permissions for each role**. Using roleId from jwt token we will then get permissions and keep in the request object so that whenever user hits an endpoint, we can verify whether the role of that user is having permission to access particular end points
 **Permssions in the database for admin**
 
-// add permission data from database here
+![Mongo DB connect](./images/adminPermissions.png?raw=true)
+
 
 **Login as a customer and trying to add Product in the database. which is not recommended and application should return unauthorized for such actions**
 
 `/login` as a customer
 
-// add login customer image
-
-`/addProduct being in customer session`
-
-// add unauthorized to access url
+![Mongo DB connect](./images/login-as-customer.png?raw=true)
 
 
+`/addProduct being in customer session` - As per **RBAC** Customer is not having access to adding new product into the database.
+
+![Mongo DB connect](./images/unauthorized-to-access-url.png?raw=true)
 
 Congratuations, Finally you are able to setup your node project and hit the end points
 
