@@ -1,15 +1,12 @@
-In this exercise you'll walk through creating and deploying a simple, smart contract on the Goerli test network using [MetaMask](https://metamask.io), [Solidity](https://docs.soliditylang.org/en/v0.8.0/), [Hardhat](https://hardhat.org), and [Alchemy](https://alchemyapi.io/eth).
-
+# Supply Chain Management System using Nodejs and Mongo DB 
 
 In this project, you will walk theough creating an API using [Node js](https://nodejs.org/en/docs/) and Mongo DB.
 If you have any questions throughout the procedure. feel free to reach out.
 
-# Supply Chain Management System using Nodejs and Mongo DB 
-
 ## Part 1 - Prerequisistes - Set up the account in mongoDB atlas and installations(node and npm).
 
 To start with, you need to setup account in mongoDB atlas
-### - mongoDB Atlas
+### Step1 - mongoDB Atlas
 We will be using mongoDB atals for the project as it provides free tier. It provides a cluster of database and handles any downtime issues for us.
 [Sign up for free account](https://www.mongodb.com/cloud/atlas/signup?utm_content=rlsapostreg&utm_source=google&utm_campaign=search_gs_pl_evergreen_atlas_general_retarget-brand-postreg_gic-null_amers-us-ca_ps-all_desktop_eng_lead&utm_term=&utm_medium=cpc_paid_search&utm_ad=&utm_ad_campaign_id=14383025495&adgroup=129270225274&gclid=CjwKCAjw4c-ZBhAEEiwAZ105RSrPGJ1z9z6GBRUOrPw-DD8vYkxSP091du-xhQjCroMaiC07wLNw8BoC2IAQAvD_BwE)
 
@@ -20,14 +17,14 @@ Once you are able to access mongoDB there is an option to know your connection s
 ![Hello world create app](./hello-world-create-app.png) // load mongodb connect image
 
 we will be using the connection string when we set up out node project
-### install node and npm 
+### Step2 - install node and npm 
 to know whether you have npm installed
 npm --version
 for node : node --version - should be above v8.0.0 as most of the services are compatible with lower versions -[try upgrading npm](https://docs.npmjs.com/try-the-latest-stable-version-of-npm)
 if you are able to see version number then proceed to the next steps
 If you do not have npm and node installed in your project then follow [npm and node installation guide](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
-### install postman
+### Step 3 - install postman
 We need postman to test our API endpoints once the development is done. [Download postman](https://learning.postman.com/docs/getting-started/installation-and-updates/)
 
 ## Part 2 - Set up node project
