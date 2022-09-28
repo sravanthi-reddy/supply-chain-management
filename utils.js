@@ -36,16 +36,12 @@ const validateUsername = async email => {
    return user ? false : true;
   
   };
+
 module.exports = {userAuth,checkPermission,validateUsername}
 
-
-  
-
-const validateEmail = async email => {
-    let user = await User.findOne({ email });
-    return user ? false : true;
-  };
-
+/**
+ * Future Use
+ */
 //       const serializeUser = user => {
 //         return {
 //           username: user.username,

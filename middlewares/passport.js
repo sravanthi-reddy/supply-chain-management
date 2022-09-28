@@ -1,7 +1,6 @@
-const User = require("../entities/user.entity");
 require('dotenv').config();
-
 const { Strategy, ExtractJwt } = require("passport-jwt");
+const userEntity = require('../entities/user.entity');
 
 const opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -9,13 +8,10 @@ const opts = {
 };
 
 module.exports = passport => {
-  console.log("hitting token")
   passport.use(
     new Strategy(opts, async (payload, done) => {
-      console.log("payload",payload)
-      await User.findById(payload.userId)
+      await userEntity.findById(payload.userId)
         .then(user => {
-          console.log("get user from token", user)
           if (user) {
             return done(null, user);
           }

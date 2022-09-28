@@ -2,8 +2,8 @@ const express  = require("express");
 const configureData  = require("../seedData");
 const { addProduct, updateProductInfo, deleteProductById, viewProductById, viewAllProductsInfo } = require("../controller/product.controller");
 const { home, registerUser, login } = require("../controller/user.controller");
-const {userAuth, checkRole, checkPermission} = require("../utils");
-const { placeCustomerOrder, trackCustomerOrder, placeStockOrder, trackStkOrder, trackStockOrder } = require("../controller/order.controller");
+const {userAuth,checkPermission} = require("../utils");
+const { placeCustomerOrder, trackCustomerOrder, placeStockOrder,trackStockOrder } = require("../controller/order.controller");
 const { viewAllSupplierInfo } = require("../controller/supplier.controller");
 const router = express.Router();
 

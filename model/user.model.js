@@ -1,34 +1,25 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const userEntity = require("../entities/user.entity");
+const { validateUsername } = require("../utils");
 const { getRoleByName } = require("./role.model");
 
 
 //create user
 const createUser = async (user) => {
-
-  console.log("user",user)
-
   const hashedPwd = await bcrypt.hash(user.password, 12);
-  console.log("pwd",hashedPwd)
-
-  user.password = hashedPwd
-  const newUser = new userEntity({...user})
-  // const newUser = new userEntity({
-  //   "name": user.name,
-  //   "email": user.email,
-  //   "roleId": user.roleId,
-  //   "password": hashedPwd,
-  //   "phoneNumber": user.phoneNumber,
-  //   "addressLine1": user.addressLine1,
-  //   "province": user.province,
-  //   "city": user.city,
-  //   "postalCode": user.postalCode
-  // });
-  console.log("new user",newUser)
-
+  const newUser = new userEntity({
+    "name": user.name,
+    "email": user.email,
+    "roleId": user.roleId,
+    "password": hashedPwd,
+    "phoneNumber": user.phoneNumber,
+    "addressLine1": user.addressLine1,
+    "province": user.province,
+    "city": user.city,
+    "postalCode": user.postalCode
+  });
   return await newUser.save()
-
 }
 
 
@@ -107,16 +98,9 @@ const userLogin = async (loginParams, res) => {
 };
 
 
-
-const validateUsername = async username => {
-  console.log("finding user with name", username)
-  let user = await User.findOne({ username });
-  return user ? false : true;
-};
-
 const ViewAllSuppliers = async () => {
   var supplierRole = getRoleByName("Supplier")
-  var suppliers = userEntity.find({roleId : supplierRole._id}) //.populate("roleId")
+  var suppliers = userEntity.find({roleId : supplierRole._id}) 
   return suppliers
 }
 

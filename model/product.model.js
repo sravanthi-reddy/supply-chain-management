@@ -1,13 +1,13 @@
-const User = require("../entities/user.entity");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 const productEntity = require("../entities/product.entity");
 const stockEntity = require("../entities/stock.entity");
 
 
-//create product
+/**
+ * 
+ * @param {productEntity - information to be added into the Database} product 
+ * @returns productEntity : created product info
+ */
 const createProduct = async (product) => {
-
     const newStock = await createStock(product);
     const newProduct = new productEntity({
     "stockId" : newStock._id,
@@ -18,8 +18,12 @@ const createProduct = async (product) => {
   return await newProduct.save()
 }
 
+/**
+ * 
+ * @param {stock information - stockEntity} stock 
+ * @returns stockEntity - created stock infromation
+ */
 const createStock = async (stock) => {
-    console.log("inside stock validation")
     const newStock = new stockEntity({
     "stockQty" : stock.stockQuantity,
     "unitPrice" : stock.unitPrice
@@ -27,12 +31,23 @@ const createStock = async (stock) => {
   return await newStock.save()
 }
 
+/**
+ * 
+ * @param {stock id for which stock needs to be checked} stockId 
+ * @returns stockEntity - information of the stock
+ */
+
 const getStockInfo = async (stockId) => {
    var stockInfo = stockEntity.findById(stockId)
    return stockInfo;
 }
 
-//update product
+/**
+ * 
+ * @param {updated product information} newProduct 
+ * @param {product id} id 
+ * @returns  Productentity - updated product information
+ */
 const updateProduct = async (newProduct,id) => {
 
       var product = productEntity.findById(id)
@@ -41,17 +56,31 @@ const updateProduct = async (newProduct,id) => {
       return await product.save()
   }
 
+/**
+ * 
+ * @param {product Id to delete the product} id 
+ * @returns boolean - deleted or not
+ */
+
 const deleteProduct = async (id) => {
   
     var isDelete = productEntity.findByIdAndDelete(id)
     return isDelete
   }
-
-const ViewProduct = async (newProduct,id) => {
+/**
+ * 
+ * @param {product Id to view it's information} id 
+ * @returns product entity with information
+ */
+const ViewProduct = async (id) => {
   var product = productEntity.findById(id)
     return product
 }
   
+/**
+ * 
+ * @returns List product entities
+ */
 const ViewAllProducts = async () => {
   var products = productEntity.find()
   return products
