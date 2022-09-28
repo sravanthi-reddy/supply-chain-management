@@ -14,7 +14,7 @@ once you register yourself, sign in and  create project and database then choose
 
 Once you are able to access mongoDB there is an option to know your connection string - go to database under deployment in the left menu and click on connect and select conenct to your Application then you should be able to see similar screen as below
 
-![Hello world create app](./images/add product with token.png)
+![Sign up for mongo Atlas](./images/add product with token.png)
 
 we will be using the connection string when we set up out node project
 ### Step2 - install node and npm 
