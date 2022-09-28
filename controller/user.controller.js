@@ -1,4 +1,6 @@
+const { getRoleByName } = require("../model/role.model");
 const { createUser, userLogin } = require("../model/user.model");
+const { validateUsername } = require("../utils");
 
 
 //Home URL 
@@ -9,20 +11,25 @@ const home = async(req,res) => {
 }
 
 //create User
-const registerUser = async (req,res,roleId) => {
+const registerUser = async (req,res) => {
+  console.log("user name", req.body)
   try {  
     let user = req.body;
    
     let usernameNotTaken = await validateUsername(user.email);
+    console.log("user name validation", usernameNotTaken)
+
     if (!usernameNotTaken) {
-        res.status(400).json({
+        return res.status(400).json({
         message: `Email is already registered.`,
         success: false
       });
     }
-   
-    if(roleId != null){
-      user.roleId = roleId
+    var customerRole = await getRoleByName("Customer");
+
+    console.log("customer role",customerRole,customerRole._id, customerRole._id != null)
+    if(customerRole._id != null){
+      user.roleId = customerRole._id  
     }else{
       return res.status(500).json({
         message: "please provide valide role id.",
@@ -31,7 +38,7 @@ const registerUser = async (req,res,roleId) => {
     }
     
     var newCustomer = await createUser(user);
-    res.status(201).json({
+    return res.status(201).json({
           message: "Hurry! now you are successfully registred. Please nor login.",
           success: true,
           data : newCustomer
@@ -41,7 +48,7 @@ const registerUser = async (req,res,roleId) => {
     return res.status(500).json({
       message: "Unable to create your account.",
       success: false,
-      error : error
+      errorMessage : {...error}
     });
   }
 };

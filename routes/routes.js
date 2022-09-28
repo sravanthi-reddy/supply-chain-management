@@ -21,14 +21,14 @@ router.get("/ViewProduct",userAuth,checkPermission("ViewProduct"),viewProductByI
 router.get("/ViewAllProducts",userAuth,checkPermission("ViewAllProducts"),viewAllProductsInfo)
 
 //Supplier
-router.get("/ViewAllSupplier",userAuth,viewAllSupplierInfo)
+router.get("/ViewAllSupplier",userAuth,checkPermission("ViewAllSupplier"),viewAllSupplierInfo)
 
 //Order related enpoints
-router.post("/placeCustomerOrder",userAuth,placeCustomerOrder)
-router.get("/trackCustomerOrder",userAuth,trackCustomerOrder)
+router.post("/placeCustomerOrder",userAuth,checkPermission("placeCustomerOrder"),placeCustomerOrder)
+router.get("/trackCustomerOrder",userAuth,checkPermission("trackCustomerOrder"),trackCustomerOrder)
 
-router.post("/placeStockOrder",userAuth,placeStockOrder)
-router.get("/trackStockOrder",userAuth,trackStockOrder)
+router.post("/placeStockOrder",checkPermission("placeStockOrder"),userAuth,placeStockOrder)
+router.get("/trackStockOrder",checkPermission("trackStockOrder"),userAuth,trackStockOrder)
 
 // /** out of scope for current milestone 
 

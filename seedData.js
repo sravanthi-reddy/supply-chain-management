@@ -60,7 +60,7 @@ const populateAdminUser = async (req, res) => {
         name: "sravanthi",
        email: "sravanthi@gmail.com",
        password : process.env.ADMIN_PASS,
-       phoneNumber: 2499890067,
+       phoneNumber: 1234567890,
        addressLine1: "7 Crescent Place",
        province: "Ontario",
        city: "Scarborough" ,
@@ -80,7 +80,7 @@ const populateDefaultSupplier = async (req,res) => {
         name: "ClothingSupplier",
        email: "clothingSupplier@gmail.com",
        password: process.env.SUPP_PASS,
-       phoneNumber: 2899899003,
+       phoneNumber: 1223355567,
        addressLine1: "255 Penetanguishe road",
        province: "Ontario",
        city: "Barrie" ,
@@ -90,7 +90,7 @@ const populateDefaultSupplier = async (req,res) => {
      await configureUser(supplier,supplierRole[0]._id)
      res.status(201).json({
         message: `successfully populated the data.`,
-        success: false
+        success: true
     });
 }
 

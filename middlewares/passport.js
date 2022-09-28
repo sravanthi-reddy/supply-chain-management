@@ -13,7 +13,7 @@ module.exports = passport => {
   passport.use(
     new Strategy(opts, async (payload, done) => {
       console.log("payload",payload)
-      await User.findById(payload.user_id)
+      await User.findById(payload.userId)
         .then(user => {
           console.log("get user from token", user)
           if (user) {

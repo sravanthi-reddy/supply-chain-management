@@ -9,7 +9,7 @@ const createRole = async (roleName) => {
 }
 
 const getRoleByName = async (roleName) => {
-  var adminRole = await roleEntity.find({name : roleName});
+  var adminRole = await roleEntity.findOne({name : roleName});
   return adminRole;
 }
 
