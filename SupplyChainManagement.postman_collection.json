@@ -1,0 +1,446 @@
+{
+	"info": {
+		"_postman_id": "3707ed3e-9bfc-44c5-8657-0a9db522ca48",
+		"name": "SupplyChainManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Seed data",
+			"item": [
+				{
+					"name": "seedData",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/seeData",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"seeData"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product CRUD",
+			"item": [
+				{
+					"name": "addProduct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzMzNjUzM2NiN2Q4MDYwZjMxZDgyZDgiLCJyb2xlIjoiNjMzMzY1MzJjYjdkODA2MGYzMWQ4MmNiIiwiZW1haWwiOiJzcmF2YW50aGlAZ21haWwuY29tIiwiaWF0IjoxNjY0NDI5NDMzLCJleHAiOjE2NjUwMzQyMzN9.Cw17ghZ2RrnchxIi2sc7TpoWYIdERwrWtu-lZioL7Ic",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"productName\" : \"Nike Hoodie\",\r\n    \"productCategory\" : \"Clothing\",\r\n    \"stockQuantity\" : 10,\r\n    \"unitPrice\" : \"200\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/addProduct",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"addProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProduct",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzMzNjUzM2NiN2Q4MDYwZjMxZDgyZDgiLCJyb2xlIjoiNjMzMzY1MzJjYjdkODA2MGYzMWQ4MmNiIiwiZW1haWwiOiJzcmF2YW50aGlAZ21haWwuY29tIiwiaWF0IjoxNjY0NDI5NDMzLCJleHAiOjE2NjUwMzQyMzN9.Cw17ghZ2RrnchxIi2sc7TpoWYIdERwrWtu-lZioL7Ic",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"productName\" : \"Universal Adaptor\",\r\n    \"productCategory\" : \"Electronics\",\r\n    \"stockQuantity\" : 30,\r\n    \"unitPrice\" : \"30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/updateProduct?productId=6335313c878078119340d6e7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"updateProduct"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "6335313c878078119340d6e7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzMzNjUzM2NiN2Q4MDYwZjMxZDgyZDgiLCJyb2xlIjoiNjMzMzY1MzJjYjdkODA2MGYzMWQ4MmNiIiwiZW1haWwiOiJzcmF2YW50aGlAZ21haWwuY29tIiwiaWF0IjoxNjY0NDI5NDMzLCJleHAiOjE2NjUwMzQyMzN9.Cw17ghZ2RrnchxIi2sc7TpoWYIdERwrWtu-lZioL7Ic",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/deleteProduct?productId=6335313c878078119340d6e7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"deleteProduct"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "6335313c878078119340d6e7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "viewAllProducts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzMzNjUzM2NiN2Q4MDYwZjMxZDgyZDgiLCJyb2xlIjoiNjMzMzY1MzJjYjdkODA2MGYzMWQ4MmNiIiwiZW1haWwiOiJzcmF2YW50aGlAZ21haWwuY29tIiwiaWF0IjoxNjY0NDI5NDMzLCJleHAiOjE2NjUwMzQyMzN9.Cw17ghZ2RrnchxIi2sc7TpoWYIdERwrWtu-lZioL7Ic",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/viewAllProducts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"viewAllProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "viewProduct",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzMzNjUzM2NiN2Q4MDYwZjMxZDgyZDgiLCJyb2xlIjoiNjMzMzY1MzJjYjdkODA2MGYzMWQ4MmNiIiwiZW1haWwiOiJzcmF2YW50aGlAZ21haWwuY29tIiwiaWF0IjoxNjY0NDI5NDMzLCJleHAiOjE2NjUwMzQyMzN9.Cw17ghZ2RrnchxIi2sc7TpoWYIdERwrWtu-lZioL7Ic",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/viewProduct?productId=633530e925747bdd9d1160e6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"viewProduct"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "633530e925747bdd9d1160e6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Home",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adminlogin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/login?email=sravanthi@gmail.com&password=@dm!n",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "sravanthi@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "@dm!n"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/login?email=shashi@gmail.com&password=abcd@123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "shashi@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "abcd@123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register New Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"kunal\",\r\n  \"email\": \"kunal@gmail.com\",\r\n  \"phoneNumber\": 9838312345,\r\n  \"addressLine1\": \"york village street\",\r\n  \"province\": \"Ontario\",\r\n  \"city\": \"York\" ,\r\n  \"postalCode\": \"M4C5L7\",\r\n  \"password\" : \"abcd@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/registerCustomer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"registerCustomer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "placeCustomerOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzMzNjUzM2NiN2Q4MDYwZjMxZDgyZDgiLCJyb2xlIjoiNjMzMzY1MzJjYjdkODA2MGYzMWQ4MmNiIiwiZW1haWwiOiJzcmF2YW50aGlAZ21haWwuY29tIiwiaWF0IjoxNjY0NDI5NDMzLCJleHAiOjE2NjUwMzQyMzN9.Cw17ghZ2RrnchxIi2sc7TpoWYIdERwrWtu-lZioL7Ic",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\" : \"633530e925747bdd9d1160e6\",\r\n    \"deliveryAddress\" : \"255 Penetanguishene road, Barrie, ON, L4M7C2\",\r\n    \"paymentMode\" : \"Online\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/placeCustomerOrder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"placeCustomerOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trackCustomerOrder",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzMzNjUzM2NiN2Q4MDYwZjMxZDgyZDgiLCJyb2xlIjoiNjMzMzY1MzJjYjdkODA2MGYzMWQ4MmNiIiwiZW1haWwiOiJzcmF2YW50aGlAZ21haWwuY29tIiwiaWF0IjoxNjY0NDI5NDMzLCJleHAiOjE2NjUwMzQyMzN9.Cw17ghZ2RrnchxIi2sc7TpoWYIdERwrWtu-lZioL7Ic",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/trackCustomerOrder?customerOrderId=63354022425508405b3bc931",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackCustomerOrder"
+							],
+							"query": [
+								{
+									"key": "customerOrderId",
+									"value": "63354022425508405b3bc931"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trackStockOrder",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzMzNjUzM2NiN2Q4MDYwZjMxZDgyZDgiLCJyb2xlIjoiNjMzMzY1MzJjYjdkODA2MGYzMWQ4MmNiIiwiZW1haWwiOiJzcmF2YW50aGlAZ21haWwuY29tIiwiaWF0IjoxNjY0NDI5NDMzLCJleHAiOjE2NjUwMzQyMzN9.Cw17ghZ2RrnchxIi2sc7TpoWYIdERwrWtu-lZioL7Ic",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/trackStockOrder?stockOrderId=633542a98b269e9e0da7c056",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackStockOrder"
+							],
+							"query": [
+								{
+									"key": "stockOrderId",
+									"value": "633542a98b269e9e0da7c056"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "placeStockOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzMzNjUzM2NiN2Q4MDYwZjMxZDgyZDgiLCJyb2xlIjoiNjMzMzY1MzJjYjdkODA2MGYzMWQ4MmNiIiwiZW1haWwiOiJzcmF2YW50aGlAZ21haWwuY29tIiwiaWF0IjoxNjY0NDI5NDMzLCJleHAiOjE2NjUwMzQyMzN9.Cw17ghZ2RrnchxIi2sc7TpoWYIdERwrWtu-lZioL7Ic",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"stockId\" : \"6335313c878078119340d6e5\",\r\n    \"stockOrderQty\" : 3,\r\n    \"shippingAddress\" : \"252 Manufacturing Unit, Barrie, ON, L4M7C2\",\r\n    \"paymentMode\" : \"Online\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/placeStockOrder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"placeStockOrder"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
