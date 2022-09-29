@@ -1,5 +1,5 @@
 const express = require('express');
-const { createDbConnection, configureData } = require('./config/appConfig');
+const { createDbConnection} = require('./config/appConfig');
 const bodyParser  = require("body-parser");
 const passport = require("passport");
 const routes = require('./routes/routes');
@@ -17,9 +17,6 @@ app.use(bodyParser.json());
 require("./middlewares/passport")(passport);
 
 createDbConnection();
-
-//configureData();
-
 
 app.use(routes);
 

@@ -1,23 +1,34 @@
 const { getRoleByName } = require("../model/role.model");
 const { createUser, userLogin } = require("../model/user.model");
-const { validateUsername } = require("../utils");
+const { validateUsername, isEmptyObject, isNullOrEmpty } = require("../utils");
 
-
-//Home URL 
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
 const home = async(req,res) => {
     res.status(201).json({
         message : "Welcome to Supply Chain Management Application"
     })
 }
 
-//create User
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @returns success message with registered user information 
+ */
 const registerUser = async (req,res) => {
-  console.log("user name", req.body)
   try {  
+    if(isNullOrEmpty(req.body) || isEmptyObject(req.body)){
+      return res.status(500).json({
+        message: "Please provide valid user information",
+        success: false,
+      });
+    }
     let user = req.body;
-   
     let usernameNotTaken = await validateUsername(user.email);
-    console.log("user name validation", usernameNotTaken)
 
     if (!usernameNotTaken) {
         return res.status(400).json({
@@ -26,8 +37,6 @@ const registerUser = async (req,res) => {
       });
     }
     var customerRole = await getRoleByName("Customer");
-
-    console.log("customer role",customerRole,customerRole._id, customerRole._id != null)
     if(customerRole._id != null){
       user.roleId = customerRole._id  
     }else{
@@ -38,13 +47,22 @@ const registerUser = async (req,res) => {
     }
     
     var newCustomer = await createUser(user);
+    if(isNullOrEmpty(newCustomer) || isEmptyObject(newCustomer)){
+      return res.status(500).json({
+        message: "Unable to register supplier at the moment. Please try later",
+        success: false,
+      });
+    }else{
+    delete newCustomer.roleId
     return res.status(201).json({
           message: "Hurry! now you are successfully registred. Please nor login.",
           success: true,
           data : newCustomer
     });
-   
+  }
   }catch(error){
+    logger.error(`${error.status || 500}- ${error.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
+
     return res.status(500).json({
       message: "Unable to create your account.",
       success: false,
@@ -56,13 +74,19 @@ const registerUser = async (req,res) => {
 //login
 const login = async (req,res) => {
     try {  
+      if(isNullOrEmpty(req.query) || isNullOrEmpty(req.query.email) || isNullOrEmpty(req.query.password)){
+        return res.status(500).json({
+          message: "Please provide valid user name and password",
+          success: false,
+        });
+      }
       var loginParams = {}
-      console.log("request params",req.query)
       loginParams.email = req.query.email;
       loginParams.password = req.query.password;
-      loginParams.role = req.query.role
       return await userLogin(loginParams,res);
     }catch(error){
+      logger.error(`${error.status || 500}- ${error.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
+
       res.status(400).json({
           error: error
       })

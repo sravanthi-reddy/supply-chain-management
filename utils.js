@@ -37,7 +37,13 @@ const validateUsername = async email => {
   
   };
 
-module.exports = {userAuth,checkPermission,validateUsername}
+const  isEmptyObject = (obj)  => {
+    return !Object.keys(obj).length;
+  }
+const  isNullOrEmpty = (value)  => {
+  return value == null || value == "" || value == " "
+}
+module.exports = {userAuth,checkPermission,validateUsername,isEmptyObject,isNullOrEmpty}
 
 /**
  * Future Use

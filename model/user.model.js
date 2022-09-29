@@ -67,14 +67,14 @@ const userLogin = async (loginParams, res) => {
               email: user.email,
             },
             process.env.SECRET,
-            { expiresIn: "7 days" }
+            { expiresIn: "2d" } //number of milli seconds,100s, 1h, 1d, 2 days,
           );
 
           let result = {
             username: user.email,
-            role: user.roleId,
+            //role: user.roleId,
             token: `Bearer ${token}`,
-            expiresIn: "7 days"
+            expiresIn: "2 days"
           };
 
           return res.status(200).json({

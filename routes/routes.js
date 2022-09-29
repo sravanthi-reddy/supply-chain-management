@@ -27,8 +27,8 @@ router.get("/ViewAllSupplier",userAuth,checkPermission("ViewAllSupplier"),viewAl
 router.post("/placeCustomerOrder",userAuth,checkPermission("placeCustomerOrder"),placeCustomerOrder)
 router.get("/trackCustomerOrder",userAuth,checkPermission("trackCustomerOrder"),trackCustomerOrder)
 
-router.post("/placeStockOrder",checkPermission("placeStockOrder"),userAuth,placeStockOrder)
-router.get("/trackStockOrder",checkPermission("trackStockOrder"),userAuth,trackStockOrder)
+router.post("/placeStockOrder",userAuth,checkPermission("placeStockOrder"),placeStockOrder)
+router.get("/trackStockOrder",userAuth,checkPermission("trackStockOrder"),trackStockOrder)
 
 // /** out of scope for current milestone 
 

@@ -31,6 +31,11 @@ const createStock = async (stock) => {
   return await newStock.save()
 }
 
+const updateStock = async (id, values) => {
+ 
+  await stockEntity.updateOne({_id : id},values);
+}
+
 /**
  * 
  * @param {stock id for which stock needs to be checked} stockId 
@@ -42,6 +47,7 @@ const getStockInfo = async (stockId) => {
    return stockInfo;
 }
 
+
 /**
  * 
  * @param {updated product information} newProduct 
@@ -50,10 +56,12 @@ const getStockInfo = async (stockId) => {
  */
 const updateProduct = async (newProduct,id) => {
 
-      var product = productEntity.findById(id)
-      product.productName = newProduct.productName,
-      product.categoryName = newProduct.categoryName
-      return await product.save()
+      var productInfo = await productEntity.findById(id)
+      var newvalues = { $set: {productName:  newProduct.productName, categoryName: newProduct.categoryName } };
+      var newStockValues = { $set: {stockQty:  newProduct.stockQuantity, unitPrice: newProduct.unitPrice } };
+      await productEntity.updateOne({_id : id},newvalues);
+      await updateStock(productInfo.stockId,newStockValues)
+      return await ViewProduct(id)
   }
 
 /**
@@ -73,8 +81,8 @@ const deleteProduct = async (id) => {
  * @returns product entity with information
  */
 const ViewProduct = async (id) => {
-  var product = productEntity.findById(id)
-    return product
+  var product = await productEntity.findById(id).populate("stockId")
+  return product
 }
   
 /**

@@ -1,6 +1,5 @@
 
 
-const productEntity = require("../entities/product.entity");
 const customerOrderEntity = require("../entities/customerOrder.entity");
 const stockrOrderEntity = require("../entities/stockOrder.entity");
 
@@ -11,7 +10,7 @@ const placeCustOrder = async (orderInfo) => {
         productId : orderInfo.productId,
         userId : orderInfo.userId,
         orderAmount: orderInfo.orderAmount,
-        status: "In Progress",
+        status: "Order Confirmed",
         deliveryAddress: orderInfo.deliveryAddress,
         paymentMode: orderInfo.paymentMode,
   });
@@ -21,8 +20,8 @@ const placeCustOrder = async (orderInfo) => {
 //track customer order
 const trackCustOrder = async (orderId) => {
 
-      var orderInfo = customerOrderEntity.findById(orderId)
-      return orderInfo.status
+      var orderInfo = await customerOrderEntity.findById(orderId)
+      return orderInfo
   }
 
   
@@ -32,9 +31,10 @@ const placeStkOrder = async (orderInfo) => {
         stockId : orderInfo.stockId,
         userId : orderInfo.userId,
         orderAmount: orderInfo.orderAmount,
-        status: "In Progress",
+        status: "Order Confirmed",
         shippingAddress: orderInfo.shippingAddress,
         paymentMode: orderInfo.paymentMode,
+        stockOrderQty : orderInfo.stockOrderQty
   });
   return await newOrder.save()
 }
@@ -42,8 +42,8 @@ const placeStkOrder = async (orderInfo) => {
 //track customer order
 const trackStkOrder = async (orderId) => {
 
-      var orderInfo = stockrOrderEntity.findById(orderId)
-      return orderInfo.status
+      var orderInfo = await stockrOrderEntity.findById(orderId)
+      return orderInfo
   }
 
 module.exports = {placeCustOrder, trackCustOrder,placeStkOrder,trackStkOrder}
