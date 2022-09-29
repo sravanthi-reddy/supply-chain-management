@@ -8,11 +8,11 @@ const stockEntity = require("../entities/stock.entity");
  * @returns productEntity : created product info
  */
 const createProduct = async (product) => {
-    const newStock = await createStock(product);
-    const newProduct = new productEntity({
-    "stockId" : newStock._id,
-    "productName" : product.productName,
-    "categoryName" : product.productCategory
+  const newStock = await createStock(product);
+  const newProduct = new productEntity({
+    "stockId": newStock._id,
+    "productName": product.productName,
+    "categoryName": product.productCategory
   });
 
   return await newProduct.save()
@@ -24,16 +24,16 @@ const createProduct = async (product) => {
  * @returns stockEntity - created stock infromation
  */
 const createStock = async (stock) => {
-    const newStock = new stockEntity({
-    "stockQty" : stock.stockQuantity,
-    "unitPrice" : stock.unitPrice
+  const newStock = new stockEntity({
+    "stockQty": stock.stockQuantity,
+    "unitPrice": stock.unitPrice
   });
   return await newStock.save()
 }
 
 const updateStock = async (id, values) => {
- 
-  await stockEntity.updateOne({_id : id},values);
+
+  await stockEntity.updateOne({ _id: id }, values);
 }
 
 /**
@@ -43,8 +43,8 @@ const updateStock = async (id, values) => {
  */
 
 const getStockInfo = async (stockId) => {
-   var stockInfo = stockEntity.findById(stockId)
-   return stockInfo;
+  var stockInfo = stockEntity.findById(stockId)
+  return stockInfo;
 }
 
 
@@ -54,15 +54,15 @@ const getStockInfo = async (stockId) => {
  * @param {product id} id 
  * @returns  Productentity - updated product information
  */
-const updateProduct = async (newProduct,id) => {
+const updateProduct = async (newProduct, id) => {
 
-      var productInfo = await productEntity.findById(id)
-      var newvalues = { $set: {productName:  newProduct.productName, categoryName: newProduct.categoryName } };
-      var newStockValues = { $set: {stockQty:  newProduct.stockQuantity, unitPrice: newProduct.unitPrice } };
-      await productEntity.updateOne({_id : id},newvalues);
-      await updateStock(productInfo.stockId,newStockValues)
-      return await ViewProduct(id)
-  }
+  var productInfo = await productEntity.findById(id)
+  var newvalues = { $set: { productName: newProduct.productName, categoryName: newProduct.categoryName } };
+  var newStockValues = { $set: { stockQty: newProduct.stockQuantity, unitPrice: newProduct.unitPrice } };
+  await productEntity.updateOne({ _id: id }, newvalues);
+  await updateStock(productInfo.stockId, newStockValues)
+  return await ViewProduct(id)
+}
 
 /**
  * 
@@ -71,10 +71,10 @@ const updateProduct = async (newProduct,id) => {
  */
 
 const deleteProduct = async (id) => {
-  
-    var isDelete = productEntity.findByIdAndDelete(id)
-    return isDelete
-  }
+
+  var isDelete = productEntity.findByIdAndDelete(id)
+  return isDelete
+}
 /**
  * 
  * @param {product Id to view it's information} id 
@@ -84,7 +84,7 @@ const ViewProduct = async (id) => {
   var product = await productEntity.findById(id).populate("stockId")
   return product
 }
-  
+
 /**
  * 
  * @returns List product entities
@@ -94,4 +94,4 @@ const ViewAllProducts = async () => {
   return products
 }
 
-module.exports = {ViewAllProducts, ViewProduct, deleteProduct,updateProduct,createProduct, getStockInfo}
+module.exports = { ViewAllProducts, ViewProduct, deleteProduct, updateProduct, createProduct, getStockInfo, updateStock }

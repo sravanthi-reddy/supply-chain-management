@@ -169,7 +169,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzMzNjUzM2NiN2Q4MDYwZjMxZDgyZDgiLCJyb2xlIjoiNjMzMzY1MzJjYjdkODA2MGYzMWQ4MmNiIiwiZW1haWwiOiJzcmF2YW50aGlAZ21haWwuY29tIiwiaWF0IjoxNjY0NDI5NDMzLCJleHAiOjE2NjUwMzQyMzN9.Cw17ghZ2RrnchxIi2sc7TpoWYIdERwrWtu-lZioL7Ic",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzM2MDU1OTA2ZTRiNzlkZGY0ZTRmMTQiLCJyb2xlIjoiNjMzMzY1MzJjYjdkODA2MGYzMWQ4MmNmIiwiZW1haWwiOiJ2YWlzaHVAZ21haWwuY29tIiwiaWF0IjoxNjY0NDg0NzY3LCJleHAiOjE2NjQ2NTc1Njd9.y6XSBuz2yh0C5xfF7J6i4hBgB6iWMdwN-6gaWDPDXTo",
 								"type": "default"
 							}
 						],
@@ -284,7 +284,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"name\": \"kunal\",\r\n  \"email\": \"kunal@gmail.com\",\r\n  \"phoneNumber\": 9838312345,\r\n  \"addressLine1\": \"york village street\",\r\n  \"province\": \"Ontario\",\r\n  \"city\": \"York\" ,\r\n  \"postalCode\": \"M4C5L7\",\r\n  \"password\" : \"abcd@123\"\r\n}",
+							"raw": "{\r\n   \"name\": \"arjun\",\r\n  \"email\": \"arjun123@gmail.com\",\r\n  \"phoneNumber\": 1234556789,\r\n  \"addressLine1\": \"finch west street\",\r\n  \"province\": \"Ontario\",\r\n  \"city\": \"Finch\" ,\r\n  \"postalCode\": \"M4C5L7\",\r\n  \"password\" : \"abcd@123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

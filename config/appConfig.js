@@ -21,4 +21,4 @@ const getDbInstance = () => {
     return mongoose.connection;
 }
 
-module.exports = {createDbConnection, getDbInstance}
+module.exports = { createDbConnection, getDbInstance }

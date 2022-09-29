@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const stock = new Schema({
   stockQty: { type: Number, required: true },
-  unitPrice: { type: Number, required: true , min : 1},
+  unitPrice: { type: Number, required: true, min: 1 },
 }, {
   timestamps: true,
 });

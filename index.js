@@ -1,6 +1,6 @@
 const express = require('express');
-const { createDbConnection} = require('./config/appConfig');
-const bodyParser  = require("body-parser");
+const { createDbConnection } = require('./config/appConfig');
+const bodyParser = require("body-parser");
 const passport = require("passport");
 const routes = require('./routes/routes');
 

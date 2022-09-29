@@ -50,7 +50,7 @@ const userLogin = async (loginParams, res) => {
 
   try {
     var email = loginParams.email;
-    const user = await userEntity.findOne({email : email })
+    const user = await userEntity.findOne({ email: email })
     if (user == null) {
       return res.status(404).json({
         message: "Username is not found. Invalid login credentials.",
@@ -59,29 +59,29 @@ const userLogin = async (loginParams, res) => {
     }
     let isMatch = await bcrypt.compare(loginParams.password, user.password);
     if (isMatch) {
-          // Sign in the token and issue it to the user
-          let token = jwt.sign(
-            {
-              userId: user._id,
-              role: user.roleId,
-              email: user.email,
-            },
-            process.env.SECRET,
-            { expiresIn: "2d" } //number of milli seconds,100s, 1h, 1d, 2 days,
-          );
+      // Sign in the token and issue it to the user
+      let token = jwt.sign(
+        {
+          userId: user._id,
+          role: user.roleId,
+          email: user.email,
+        },
+        process.env.SECRET,
+        { expiresIn: "2d" } //number of milli seconds,100s, 1h, 1d, 2 days,
+      );
 
-          let result = {
-            username: user.email,
-            //role: user.roleId,
-            token: `Bearer ${token}`,
-            expiresIn: "2 days"
-          };
+      let result = {
+        username: user.email,
+        //role: user.roleId,
+        token: `Bearer ${token}`,
+        expiresIn: "2 days"
+      };
 
-          return res.status(200).json({
-            ...result,
-            message: "Hurray! You are now logged in.",
-            success: true
-          });
+      return res.status(200).json({
+        ...result,
+        message: "Hurray! You are now logged in.",
+        success: true
+      });
     } else {
       return res.status(403).json({
         message: "Incorrect password.",
@@ -100,8 +100,8 @@ const userLogin = async (loginParams, res) => {
 
 const ViewAllSuppliers = async () => {
   var supplierRole = getRoleByName("Supplier")
-  var suppliers = userEntity.find({roleId : supplierRole._id}) 
+  var suppliers = userEntity.find({ roleId: supplierRole._id })
   return suppliers
 }
 
-module.exports = { configureUser, createUser, userLogin,ViewAllSuppliers }
+module.exports = { configureUser, createUser, userLogin, ViewAllSuppliers }
